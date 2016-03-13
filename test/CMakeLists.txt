@@ -6,7 +6,7 @@ add_compiler_flag(WERROR -Werror)
 
 function(add_gtest name)
   add_executable(${name} ${name}.cpp)
-  target_link_libraries(${name} gtest gtest_main pthread)
+  target_link_libraries(${name} gtest gtest_main pthread variant)
   add_test(${name} ${name} --gtest_color=yes)
 endfunction(add_gtest)
 

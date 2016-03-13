@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.3)
 
 project(variant CXX)
 
@@ -11,9 +11,19 @@ macro(add_compiler_flag testname flag)
   endif()
 endmacro()
 
-add_compiler_flag(STD_CXX14 -std=c++14)
+add_library(variant INTERFACE)
 
-include_directories(include)
+target_include_directories(
+  variant
+  INTERFACE
+  include
+  )
+
+target_compile_options(
+  variant
+  INTERFACE
+  -std=c++14
+  )
 
 add_subdirectory(3rdparty/googletest/googletest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
